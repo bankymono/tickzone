@@ -1,0 +1,27 @@
+.footer-container {
+    padding: 0 150px;
+    background-color: #06283D;
+    color: #FFFFFF;
+}
+
+.footer-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0;
+
+}
+
+.footer-sublink{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 990px){
+    .footer-container {
+        padding: 0 10px;
+    }
+}

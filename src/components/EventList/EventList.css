@@ -1,0 +1,81 @@
+.eventlist-container{
+    padding: 80px 150px 0px 150px;
+}
+
+.eventlist-heading {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.eventlist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap: 20px;
+}
+
+.eventlist-item {
+    height: 250px;
+    border: 2px solid #06283D;
+    border-radius: 14px;
+    background-color: #fff;
+}
+
+.eventlist-item-btm {
+    /* background-color: red; */
+    padding: 10px;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.eventlist-item-img {
+    width: 100%;
+    height: 40%;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.eventlist-item-btm-first{
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.eventlist-item-date {
+    display: flex;
+    flex-direction: column;
+}
+
+.eventlist-item-date > span:first-child{
+    color: #ECC30B;
+    font-weight: bold;
+}
+
+.eventlist-item-desc > div:first-child {
+    font-weight: bold;
+}
+
+.eventlist-item-ticketandbtn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.eventlist-item-ticketandbtn{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.eventlist-item-ticketandbtn > button{
+    background-color: #06283D;
+    color: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    /* margin-bottom: 10px; */
+}
+
+.eventlist-item-ticketandbtn > :nth-child(2){
+    color: #ECC30B;
+}

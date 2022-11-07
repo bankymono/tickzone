@@ -1,0 +1,89 @@
+.homepage-container {
+    padding: 50px 150px;
+    font-size: 16px;    
+    background-color: #DFF6FF;
+    /* width: 100vw; */
+    
+}
+
+.home-item-selection{
+    margin-bottom: 15px;
+}
+
+.top-event-heading {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.top-event-card{
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #fff;
+    /* background-color: red; */
+}
+
+.top-event-img{
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+}
+
+.top-event-card-details-section{
+    margin: 0 60px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.top-evt-card-left-detail{
+    
+}
+
+.top-evt-details-date-and-time{
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.top-evt-date{
+    margin-right: 30px;
+}
+
+.top-evt-details-info{
+
+}
+
+
+.top-evt-month, .top-evt-month-time {
+    color: #ECC30B;
+    font-weight: bold;
+}
+
+.top-evt-month-no{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.top-evt-details-info-first{
+    font-weight: bold;
+    margin-bottom: 5px  ;
+}
+
+.top-evt-btn-container .top-evt-btn{
+    padding: 12px;
+    border-radius: 15px;
+    border: none;
+    background-color: #06283D;
+    color: #47B5FF;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 990px){
+    
+    .homepage-container {
+        padding: 0 20px;
+    }
+}

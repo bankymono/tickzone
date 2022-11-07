@@ -1,0 +1,16 @@
+.banner-wrapper {
+    height: 400px;
+    background-image: url(../../assets/header_bg_image.png);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #DFF6FF;
+    display: flex;
+    flex-direction: column;
+    padding: 0 150px;
+    justify-content: center;
+}
+
+.banner-wrapper div {
+    font-size: 40px;
+}
+

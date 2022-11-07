@@ -1,0 +1,121 @@
+.login-page-bg {
+    display: flex;
+    /* min-height: 100%; */
+
+}
+
+.login-left-side {
+    background-image: url(../../assets/signup_background.png);
+    display: flex;
+    flex: 50%;
+    position: relative;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+
+.bg-image {
+    position: absolute;
+    /* width: 100%; */
+}
+
+
+.login-textbox{
+    
+    width: 50%;
+    height: 120px;
+    background-color: #06283DCC;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    color: #47B5FF;
+}
+
+.login-right-side {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #47B5FF;
+}
+
+.login-heading {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.login-top-inputs{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.login-input-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-top-inputs > div.login-input-wrapper:first-child {
+    margin-right: 10px;
+}
+
+.login-input-wrapper > label {
+    margin-bottom: 5px;
+}
+
+.login-input-wrapper > input {
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+}
+
+.login-other-form {
+    margin-bottom: 10px;
+}
+
+.login-checkbox-wrapper{
+    margin-bottom: 15px;
+    font-size: 10px;
+}
+
+.login-checkbox-item {
+    display: flex;
+    align-items: center;
+}
+
+.login-checkbox-item:first-child {
+    margin-bottom: 4px;
+}
+
+.login-checkbox-item > input {
+    margin-right: 4px;
+}
+
+.login-btn {
+    display: block;
+    margin: 0 auto 30px auto;
+    background-color: #06283D;
+    color: #47B5FF;
+    border: none;
+    padding:  10px;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 990px){
+    .login-left-side {
+        display: none;
+    }   
+
+    .login-top-inputs{
+        flex-direction: column;
+        
+    }
+
+    .login-top-inputs > div.login-input-wrapper:first-child {
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+}

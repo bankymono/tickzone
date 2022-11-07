@@ -1,0 +1,121 @@
+.signup-page-bg {
+    display: flex;
+    /* min-height: 100%; */
+
+}
+
+.signup-left-side {
+    background-image: url(../../assets/signup_background.png);
+    display: flex;
+    flex: 50%;
+    position: relative;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+
+.bg-image {
+    position: absolute;
+    /* width: 100%; */
+}
+
+
+.signup-textbox{
+    
+    width: 50%;
+    height: 120px;
+    background-color: #06283DCC;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    color: #47B5FF;
+}
+
+.signup-right-side {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #47B5FF;
+}
+
+.signup-heading {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.signup-top-inputs{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.signup-input-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-top-inputs > div.signup-input-wrapper:first-child {
+    margin-right: 10px;
+}
+
+.signup-input-wrapper > label {
+    margin-bottom: 5px;
+}
+
+.signup-input-wrapper > input {
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+}
+
+.signup-other-form {
+    margin-bottom: 10px;
+}
+
+.signup-checkbox-wrapper{
+    margin-bottom: 15px;
+    font-size: 10px;
+}
+
+.signup-checkbox-item {
+    display: flex;
+    align-items: center;
+}
+
+.signup-checkbox-item:first-child {
+    margin-bottom: 4px;
+}
+
+.signup-checkbox-item > input {
+    margin-right: 4px;
+}
+
+.signup-btn {
+    display: block;
+    margin: 0 auto 30px auto;
+    background-color: #06283D;
+    color: #47B5FF;
+    border: none;
+    padding:  10px;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 990px){
+    .signup-left-side {
+        display: none;
+    }   
+
+    .signup-top-inputs{
+        flex-direction: column;
+        
+    }
+
+    .signup-top-inputs > div.signup-input-wrapper:first-child {
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+}

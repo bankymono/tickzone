@@ -1,0 +1,63 @@
+.evt-list-card {
+    border: 1px solid #000;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.evt-card-item-img {
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+}
+
+.evt-card-item-img-details {
+    padding: 15px;
+}
+
+.evt-card-item-details-top {
+    margin-bottom: 30px;
+    display: flex;
+
+}
+
+.evt-card-date-and-time{
+    margin-right: 20px;
+}
+
+.evt-card-date-text, .evt-card-date-time {
+    color: #ECC30B;
+    font-weight: bold;
+}
+
+.evt-card-date-no{
+    font-weight: bold;
+}
+
+.evt-card-detail-info .evt-card-detail-info-first {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.evt-card-item-details-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.evt-card-item-btn{
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #06283D;
+    color: #47B5FF;
+    font-weight: bold;
+}
+.evt-card-item-price{
+    color: #ECC30B;
+}
+
+@media only screen and (max-width: 990px){
+    .evt-list-card {
+        font-size: 10px;
+    }
+}
