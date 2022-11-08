@@ -1,0 +1,42 @@
+.publish-container{
+    width: 100%;
+    display: flex;
+}
+
+.publish-card{
+    background-color: #47B5FF33;
+    display: flex;
+    width: 70%;
+    height: 70%;
+}
+
+
+.publish-img{
+    width: 50%;
+    object-fit: cover;
+}
+
+.publish-right-side{
+    padding: 40px;
+    width: 50%;
+}
+
+.publish-right-side > div:first-child{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.publish-right-side > div:nth-child(2),
+.publish-right-side > div:nth-child(3),
+.publish-right-side > div:nth-child(4){
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.publish-right-side > button {
+    background-color: #06283D;
+    color: #47B5FF;
+    padding: 5px;
+    border-radius: 10px;
+}

@@ -1,0 +1,93 @@
+.events-dashboard {
+    font-size: 16px;    
+    background-color: #DFF6FF;   
+    min-height: 90vh;
+    display: flex;
+    width: 100%;
+}
+
+.evt-dashboard-header{
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.ticketlist-center-content{
+    width: 100%;
+}
+
+.events-list-db {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ticketlist-table{
+    margin-left: 50px;
+    width: 50%;
+    margin-top: 40px;
+}
+
+.ticketlist-heading{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #fff;
+    font-weight: bold;
+    padding: 20px 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.ticketlist-body-row{
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 20px;
+}
+
+.ticketlist-first{
+    display: flex;
+    align-items: center;
+}
+
+.evt-db-row-img{
+    margin: 10px;
+    width: 60px;
+}
+
+.evt-db-row-info > div:first-child{
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.evt-db-row-info > div:nth-child(2){
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.evt-db-row-info > div:nth-child(3){
+    font-size: 14px;
+}
+
+.ticketlist-three{
+    font-weight: bold;
+}
+
+.evt-db-secnd-col-content{
+    background-color: #47B5FF0D;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.evt-list-create-btn{
+    background-color: #06283D;
+    color: #47B5FF;
+    margin-right: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 15px;
+}

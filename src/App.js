@@ -1,12 +1,18 @@
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import CreateEvent from './pages/CreateEvent/CreateEvent';
+import CreateTicket from './pages/CreateTicket/CreateTicket';
 import EventDetail from './pages/EventDetail/EventDetail';
+import EventsDashboard from './pages/EventsDashboard/EventsDashboard';
 import HomePageTwo from './pages/HomepageTwo/HomePageTwo';
 // import { Homepage } from './pages/Homepage/Homepage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import PaymentPage from './pages/PaymentPage/PaymentPage';
+import PublishPage from './pages/PublishPage/PublishPage';
 import SignupPage from './pages/SignupPage/SignupPage';
+import TicketList from './pages/TicketList/TicketList';
+import UploadImage from './pages/UploadImage/UploadImage';
 
 function App() {
   return (
@@ -18,6 +24,12 @@ function App() {
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/event-detail" component={EventDetail} />
         <Route exact path="/payment-page" component={PaymentPage} />
+        <Route exact path="/events-dashboard" component={EventsDashboard} />
+        <Route exact path="/create-event" component={CreateEvent} />
+        <Route exact path="/event-ticket" component={TicketList} />
+        <Route exact path="/upload-image" component={UploadImage} />
+        <Route exact path="/publish" component={PublishPage} />
+        <Route exact path="/create-ticket" component={CreateTicket} />
       </Switch>
       <Footer />
     </div>

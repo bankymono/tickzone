@@ -1,0 +1,92 @@
+.events-dashboard {
+    font-size: 16px;    
+    background-color: #DFF6FF;   
+    min-height: 90vh;
+    display: flex;
+    width: 100%;
+}
+
+.evt-dashboard-header{
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.evt-dashboard-center-content{
+    width: 100%;
+}
+
+.events-list-db {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.evt-db-list-table{
+    margin-left: 50px;
+    width: 50%;
+    margin-top: 40px;
+}
+
+.evt-db-list-heading{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background-color: #47B5FF;
+    font-weight: bold;
+    padding: 5px 5px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.evt-db-list-body-row{
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.evt-db-list-first{
+    display: flex;
+    align-items: center;
+}
+
+.evt-db-row-img{
+    margin: 10px;
+    width: 60px;
+}
+
+.evt-db-row-info > div:first-child{
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.evt-db-row-info > div:nth-child(2){
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.evt-db-row-info > div:nth-child(3){
+    font-size: 14px;
+}
+
+.evt-db-list-three{
+    font-weight: bold;
+}
+
+.evt-db-secnd-col-content{
+    background-color: #47B5FF0D;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.evt-list-create-btn{
+    background-color: #06283D;
+    color: #47B5FF;
+    margin-right: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 15px;
+}
