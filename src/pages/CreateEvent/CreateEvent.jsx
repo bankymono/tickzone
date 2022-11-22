@@ -28,7 +28,7 @@ const CreateEvent = ({ history, match }) => {
 
         if (match.params.id) {
             dispatch(getEventDetail(match.params.id))
-            console.log("U run")
+
         }
 
         if (eventSuccess) {

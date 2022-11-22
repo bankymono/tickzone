@@ -107,4 +107,5 @@ button.evt-db-list-two{
 .event-item-link{
     text-decoration: none;
     color: #000;
+    cursor: pointer;
 }

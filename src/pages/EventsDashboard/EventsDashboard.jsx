@@ -25,29 +25,27 @@ const EventsDashboard = ({history}) => {
     },[dispatch])
 
     useEffect(()=>{
-        console.log(deletedEventData,"yoyo")
         if(deletedEventData) {
-
+            console.log(deletedEventData,"yoyo")
             Swal.fire({
                 icon: 'success',
                 title: 'Event Deleted Successfully',
                 showConfirmButton: false,
                 timer: 2000
             }).then(() => {
-                history.push('/events-dashboard')
+                history.go(0)
             })  
         }
   },[dispatch, deletedEvent,history,deletedEventLoading, deletedEventData])
 
-    const handleRedirectToPage = (e) =>{
-        history.push("/create-event")
+    const handleRedirectToPage = (id) =>{
+        history.push(`/create-event/${id}`)
     }
 
     const handleDelete = (id,e) => {
         e.stopPropagation();
         dispatch(deleteEvent(id))
 
-        history.push("/events-dashboard")
     }
 
   return (
