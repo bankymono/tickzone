@@ -30,7 +30,7 @@
 
 .evt-db-list-heading{
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr  1fr;
     background-color: #47B5FF;
     font-weight: bold;
     padding: 5px 5px;
@@ -44,6 +44,17 @@
     grid-template-columns: 2fr 1fr 1fr;
     align-items: center;
     margin-bottom: 5px;
+}
+
+button.evt-db-list-two{
+    background-color:rgba(173, 5, 2, .4);
+    padding: 10px;
+    width: 60%;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-weight: bold;
+    z-index: 300;
 }
 
 .evt-db-list-first{
@@ -76,8 +87,9 @@
 }
 
 .evt-db-secnd-col-content{
-    background-color: #47B5FF0D;
+    /* background-color: #47B5FF0D; */
     padding: 10px;
+    background-color: green;
     border-radius: 5px;
 
 }
@@ -89,4 +101,10 @@
     padding: 10px;
     font-size: 16px;
     border-radius: 15px;
+    text-decoration: none;
+}
+
+.event-item-link{
+    text-decoration: none;
+    color: #000;
 }

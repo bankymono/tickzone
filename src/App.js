@@ -25,7 +25,7 @@ function App() {
         <Route exact path="/event-detail" component={EventDetail} />
         <Route exact path="/payment-page" component={PaymentPage} />
         <Route exact path="/events-dashboard" component={EventsDashboard} />
-        <Route exact path="/create-event" component={CreateEvent} />
+        <Route exact path="/create-event/:id?" component={CreateEvent} />
         <Route exact path="/event-ticket" component={TicketList} />
         <Route exact path="/upload-image" component={UploadImage} />
         <Route exact path="/publish" component={PublishPage} />

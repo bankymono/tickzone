@@ -15,7 +15,13 @@
     align-items: center;
     font-weight: bold;
 
+    text-decoration: none;
     margin: 10px;
+    cursor: pointer;
+}
+
+.link-to-crt-evt{
+    text-decoration: none;
 }
 
 .create-event-form-container{

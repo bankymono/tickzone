@@ -1,11 +1,57 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import EventsDashboardSideBar from '../../components/EventsDashboardSideBar/EventsDashboardSideBar'
 import './EventsDashboard.css'
 import placeholder_one from '../../assets/placeholder_one.png'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { getUserEvents } from '../../redux/actions/userActions'
+import { Link } from 'react-router-dom'
+import { deleteEvent } from '../../redux/actions/eventActions'
+import Swal from 'sweetalert2';
 
-const EventsDashboard = () => {
+const EventsDashboard = ({history}) => {
+    const dispatch = useDispatch();
+
+    const userEvents = useSelector(state => state.userEvents)
+     const {userEventsList, userEventsLoading, userEventsError} = userEvents
+
+     const deletedEvent = useSelector(state => state.deletedEvent)
+     const {deletedEventData, deletedEventLoading, deletedEventError} = deletedEvent
+
+
+    useEffect(()=>{
+        dispatch(getUserEvents());
+
+    },[dispatch])
+
+    useEffect(()=>{
+        console.log(deletedEventData,"yoyo")
+        if(deletedEventData) {
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Event Deleted Successfully',
+                showConfirmButton: false,
+                timer: 2000
+            }).then(() => {
+                history.push('/events-dashboard')
+            })  
+        }
+  },[dispatch, deletedEvent,history,deletedEventLoading, deletedEventData])
+
+    const handleRedirectToPage = (e) =>{
+        history.push("/create-event")
+    }
+
+    const handleDelete = (id,e) => {
+        e.stopPropagation();
+        dispatch(deleteEvent(id))
+
+        history.push("/events-dashboard")
+    }
+
   return (
-    <div className='events-dashboard'>
+    <div className='events-dashboard'>s
             <EventsDashboardSideBar />
             <div className='evt-dashboard-center-content'>
                 <div className='evt-dashboard-header'>My Events</div>
@@ -13,52 +59,40 @@ const EventsDashboard = () => {
                     <div className='evt-db-list-table'>
                         <div className='evt-db-list-heading'>
                             <div>Events</div>
-                            <div>Sold</div>
                             <div>Status</div>
                         </div>
 
+                        
+
                         <div className='evt-db-list-body'>
-                            <div className='evt-db-list-body-row'>
-                                <div className='evt-db-list-first'>
-                                    <img className='evt-db-row-img' src={placeholder_one} alt="placeholder" />
-                                    <div className='evt-db-row-info'>
-                                        <div>Event name</div>
-                                        <div>Location</div>
-                                        <div>14 oct 2002</div>
+                            {
+                                userEventsList.length && userEventsList.length !== 0 ?
+                                userEventsList.map((userEvent,index) => (
+                                    <div onClick={()=> handleRedirectToPage(userEvent.id)} key={index} to={`/create-event/${userEvent.id}`} className="event-item-link">
+                                        <div  className='evt-db-list-body-row'>
+                                    <div className='evt-db-list-first'>
+                                        <img className='evt-db-row-img' src={placeholder_one} alt="placeholder" />
+                                        <div className='evt-db-row-info'>
+                                            <div>{userEvent.eventName}</div>
+                                            <div>{userEvent.eventLocation}</div>
+                                            <div>{(new Date(userEvent.eventDate)).toDateString()}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='evt-db-list-two'> <span className='evt-db-secnd-col-content'>1 / 100</span></div>
-                                <div className='evt-db-list-three'>Ended</div>
-                            </div>
+                                    <div className='evt-db-list-three'>{userEvent.eventDate < Date() ? "Active" : "Ended"} </div>
+                                    <button  onClick={(e) => handleDelete(userEvent.id, e)} className='evt-db-list-two'> <span className='evt-db-secnd-col-content'>Delete</span></button>
 
-                            <div className='evt-db-list-body-row'>
-                                <div className='evt-db-list-first'>
-                                    <img className='evt-db-row-img' src={placeholder_one} alt="placeholder" />
-                                    <div className='evt-db-row-info'>
-                                        <div>Event name</div>
-                                        <div>Location</div>
-                                        <div>14 oct 2002</div>
-                                    </div>
                                 </div>
-                                <div className='evt-db-list-two'> <span className='evt-db-secnd-col-content'>1 / 100</span></div>
-                                <div className='evt-db-list-three'>Ended</div>
-                            </div>
+                                </div>
+                                ))
+                                :<div></div>
+                            }
 
-                            <div className='evt-db-list-body-row'>
-                                <div className='evt-db-list-first'>
-                                    <img className='evt-db-row-img' src={placeholder_one} alt="placeholder" />
-                                    <div className='evt-db-row-info'>
-                                        <div>Event name</div>
-                                        <div>Location</div>
-                                        <div>14 oct 2002</div>
-                                    </div>
-                                </div>
-                                <div className='evt-db-list-two'> <span className='evt-db-secnd-col-content'>1 / 100</span></div>
-                                <div className='evt-db-list-three'>Ended</div>
-                            </div>
+
+
+                           
                         </div>
                     </div>
-                    <button className='evt-list-create-btn'>Create Event</button>
+                    <Link to="/create-event" className='evt-list-create-btn'>Create Event</Link>
                 </div>
             </div>
     </div>

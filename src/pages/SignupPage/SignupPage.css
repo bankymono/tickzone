@@ -61,6 +61,11 @@
     margin-right: 10px;
 }
 
+input{
+    outline: none;
+    padding: 10px;
+}
+
 .signup-input-wrapper > label {
     margin-bottom: 5px;
 }

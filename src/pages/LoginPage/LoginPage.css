@@ -1,6 +1,6 @@
 .login-page-bg {
     display: flex;
-    /* min-height: 100%; */
+    min-height: 90vh;
 
 }
 
@@ -94,6 +94,7 @@
 }
 
 .login-btn {
+    cursor: pointer;
     display: block;
     margin: 0 auto 30px auto;
     background-color: #06283D;
