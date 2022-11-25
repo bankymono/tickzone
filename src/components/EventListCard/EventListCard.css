@@ -8,6 +8,7 @@
     object-fit: cover;
     border-radius: 15px 15px 0 0;
     width: 100%;
+    height: 50%;
 }
 
 .evt-card-item-img-details {
@@ -27,6 +28,8 @@
 .evt-card-date-text, .evt-card-date-time {
     color: #ECC30B;
     font-weight: bold;
+    width: 70%;
+    /* background-color: red; */
 }
 
 .evt-card-date-no{

@@ -33,6 +33,15 @@
     outline: none;
     margin-bottom: 20px;
     padding: 20px;
+    cursor: pointer;
+}
+.evt-img-upload-input{
+    display: none;
+}
+
+.upload-img-image{
+    object-fit: cover;
+    width: 100%;
 }
 
 .upload-img-save-btn{

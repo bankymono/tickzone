@@ -6,40 +6,56 @@ import {AiFillClockCircle} from 'react-icons/ai'
 import logo_one from '../../assets/first_logo.png'
 import logo_two from '../../assets/second_logo.png'
 import logo_three from '../../assets/third_logo.png'
-import evt_detail_banner from '../../assets/event-detail-banner.png'
+import placeholder_four from '../../assets/placeholder_four.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getEventDetail } from '../../redux/actions/eventActions';
 
-const EventDetail = () => {
-  return (
+const EventDetail = ({history,match}) => {
+    const dispatch = useDispatch();
+    const eventDetail = useSelector(state => state.eventDetail)
+    const { eventDetailData, eventDetailLoading, eventDetailError } = eventDetail
+
+    useEffect(() => {
+
+        if (match.params.id) {
+            dispatch(getEventDetail(match.params.id))
+        }
+    },[match.params.id, dispatch])
+
+    const handlePageRedirect =(e, id) => {
+        history.push(`/payment-page/${id}`)
+    }
+
+    return (
     <div className='event-detail-container'>
-        <img src={evt_detail_banner} alt="banner" className='evt-detail-banner-img' />
+        {
+            eventDetailData?.imageUrl ? 
+            <img src={JSON.parse(eventDetailData?.imageUrl)} alt="banner" className='evt-detail-banner-img' />
+            :
+            <img src={placeholder_four} alt="banner" className='evt-detail-banner-img' />
+        }
+
         <div className='event-detail-bottom-item'>
-            <div className='evt-detail-heading'>PINEAPPLE FIESTA</div>
+            <div className='evt-detail-heading'>{eventDetailData?.eventName}</div>
             <div className='evt-detail-info-wrapper'>
                 <div className='event-detail-left-item'>
-                    <div className='evt-detail-top-line'>Party  .  hangouts  .  Drinks</div>
+                    {/* <div className='evt-detail-top-line'>Party  .  hangouts  .  Drinks</div> */}
                     <div className='evt-detail-second-top-line'>
-                        <IoLocationSharp /><div>Landmark beach, VI, Lagos</div>
+                        <IoLocationSharp /><div>{eventDetailData?.eventLocation}</div>
                     </div>
 
                     <div className='evt-detail-third-top-line'>
-                        <div className='evt-detail-third-date'><AiFillCalendar /><div>20 November</div></div>
-                        <div className='evt-detail-third-time'><AiFillClockCircle /><div>12:00 PM - 3:00 AM</div></div>
+                        <div className='evt-detail-third-date'><AiFillCalendar /><div>{eventDetailData?.eventDate ?(new Date(eventDetailData?.eventDate)).toDateString():"" }</div></div>
+                        {/* <div className='evt-detail-third-time'><AiFillClockCircle /><div>12:00 PM - 3:00 AM</div></div> */}
                     </div>
 
                     <div className='evt-detail-fourth-line'>
                         <div className='evt-fth-line-heading'>Event Description</div>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Etiam eu turpis molestie, dictum est a, mattis tellus. 
-                            Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, 
-                            ut interdum tellus elit sed risus. Maecenas eget condimentum velit, 
-                            sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-                             per inceptos himenaeos. Praesent auctor purus luctus enim egestas, 
-                             ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, 
-                             eu tempor urna. Curabitur vel bibendum lorem. 
-                            Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.
+                        <div>{eventDetailData?.eventDescription}
                         </div>
 
-                        <div className='evt-detail-sixth-line'>
+                        {/* <div className='evt-detail-sixth-line'>
                             <div>Event Organised in conjunction with:</div>
                             <div className='evt-detail-conjunction'>
                                 <div className='evt-detail-sponsor'>
@@ -56,7 +72,7 @@ const EventDetail = () => {
                                 </div>
 
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
@@ -73,8 +89,8 @@ const EventDetail = () => {
                             <option value="">3</option>
                         </select>
                     </div>
-
-                    <button className='event-detail-right-btn'>Buy tickets</button>
+                        {console.log(eventDetailData?.id, "heeee")}
+                    <button onClick={(e) => handlePageRedirect(e, eventDetailData?.id)} className='event-detail-right-btn'>Buy tickets</button>
                 </div>
             </div>
         </div>

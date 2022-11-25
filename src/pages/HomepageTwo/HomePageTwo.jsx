@@ -4,11 +4,13 @@ import "./HomePageTwo.css";
 
 import TopEvent from '../../components/TopEvent/TopEvent';
 import EventsList from '../../components/EventsList/EventsList';
+import { Banner } from '../../components/Banner/Banner';
 
 const HomePageTwo = () => {
   return (
     <div className='homepage-container'>
-        <TopEvent />
+        {/* <TopEvent /> */}
+        <Banner />
         <EventsList />
     </div>
   )

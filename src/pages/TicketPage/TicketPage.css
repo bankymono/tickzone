@@ -1,0 +1,58 @@
+.ticket-container{
+    background-color: #f2f2f2   ;
+    padding: 40px;
+}
+
+.ticket-info-and-qr {
+    background-color: aliceblue;
+    padding: 20px;
+    /* border-radius: ; */
+    width: 800px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 600px;
+}
+.ticket-disclaimer{
+    font-size: 14px;
+    position: absolute;
+    bottom: 20px;
+}
+
+.ticket-item{
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.ticket-info-field{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ticket-info-field > div:nth-child(2) {
+    padding-left: 10px;
+}
+
+.ticket-qrcode{
+    width: 200px;
+}
+
+.ticket-download-btn {
+    
+    margin: auto;
+    display: block;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #051b3b;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100px;
+}

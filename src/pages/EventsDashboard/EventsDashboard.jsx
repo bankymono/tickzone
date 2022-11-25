@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import EventsDashboardSideBar from '../../components/EventsDashboardSideBar/EventsDashboardSideBar'
 import './EventsDashboard.css'
-import placeholder_one from '../../assets/placeholder_one.png'
+import placeholder_four from '../../assets/placeholder_four.png'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { getUserEvents } from '../../redux/actions/userActions'
 import { Link } from 'react-router-dom'
-import { deleteEvent } from '../../redux/actions/eventActions'
+import { clearUserEvents, deleteEvent, storeEventId } from '../../redux/actions/eventActions'
 import Swal from 'sweetalert2';
+import { useState } from 'react'
 
 const EventsDashboard = ({history}) => {
     const dispatch = useDispatch();
@@ -21,12 +22,13 @@ const EventsDashboard = ({history}) => {
 
     useEffect(()=>{
         dispatch(getUserEvents());
-
     },[dispatch])
+
+
 
     useEffect(()=>{
         if(deletedEventData) {
-            console.log(deletedEventData,"yoyo")
+
             Swal.fire({
                 icon: 'success',
                 title: 'Event Deleted Successfully',
@@ -39,6 +41,7 @@ const EventsDashboard = ({history}) => {
   },[dispatch, deletedEvent,history,deletedEventLoading, deletedEventData])
 
     const handleRedirectToPage = (id) =>{
+        dispatch(storeEventId(id));
         history.push(`/create-event/${id}`)
     }
 
@@ -49,7 +52,7 @@ const EventsDashboard = ({history}) => {
     }
 
   return (
-    <div className='events-dashboard'>s
+    <div className='events-dashboard'>
             <EventsDashboardSideBar />
             <div className='evt-dashboard-center-content'>
                 <div className='evt-dashboard-header'>My Events</div>
@@ -61,15 +64,21 @@ const EventsDashboard = ({history}) => {
                         </div>
 
                         
-
                         <div className='evt-db-list-body'>
                             {
                                 userEventsList.length && userEventsList.length !== 0 ?
                                 userEventsList.map((userEvent,index) => (
                                     <div onClick={()=> handleRedirectToPage(userEvent.id)} key={index} to={`/create-event/${userEvent.id}`} className="event-item-link">
                                         <div  className='evt-db-list-body-row'>
+
                                     <div className='evt-db-list-first'>
-                                        <img className='evt-db-row-img' src={placeholder_one} alt="placeholder" />
+                                        {
+                                            userEvent.imageUrl ? 
+                                            <img className='evt-db-row-img' src={JSON.parse(userEvent.imageUrl)} alt="placeholder" />                                          
+                                            :
+                                            <img className='evt-db-row-img' src={placeholder_four} alt="placeholder" />
+                                        }
+
                                         <div className='evt-db-row-info'>
                                             <div>{userEvent.eventName}</div>
                                             <div>{userEvent.eventLocation}</div>

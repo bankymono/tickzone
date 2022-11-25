@@ -7,12 +7,15 @@ import { ClipLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import Swal from 'sweetalert2';
-import { createEvent, getEventDetail } from '../../redux/actions/eventActions'
+import { createEvent, getEventDetail, updateEvent } from '../../redux/actions/eventActions'
 
 const CreateEvent = ({ history, match }) => {
     const dispatch = useDispatch();
     const eventCreated = useSelector(state => state.eventCreated);
     const { eventSuccess, eventLoading, eventError } = eventCreated;
+
+    const eventUpdated = useSelector(state => state.eventUpdated);
+    const { upeventSuccess, upeventLoading, upeventError } = eventUpdated;
 
     const eventDetail = useSelector(state => state.eventDetail)
     const { eventDetailData, eventDetailLoading, eventDetailError } = eventDetail
@@ -61,7 +64,42 @@ const CreateEvent = ({ history, match }) => {
         history,
         eventError,
         match.params.id,
-        dispatch
+        dispatch,
+        upeventSuccess
+    ])
+
+
+    useEffect(() => {
+
+        if (upeventSuccess) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Event Updated Successfully',
+                showConfirmButton: false,
+                timer: 2000
+            }).then(() => {
+                history.push('/events-dashboard')
+            })
+        } else if (upeventError) {
+            Swal.fire({
+                icon: 'error',
+                title: upeventError,
+                showConfirmButton: false,
+                timer: 2000
+            }).then(() => {
+                setEventName('')
+                setEventDate('')
+                setEventLocation('')
+                setEventDescription('')
+
+                history.push('/create-event')
+            })
+
+        }
+    }, [
+        history,
+        upeventSuccess,
+        upeventError
     ])
 
     useEffect(() => {
@@ -81,17 +119,34 @@ const CreateEvent = ({ history, match }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        const data = {
-            eventName,
-            eventDate: new Date(eventDate),
-            eventLocation,
-            eventDescription,
+        let data ;
+        if(eventDetailData) {
+            data = {
+                ...eventDetailData,
+                eventName,
+                eventDate: new Date(eventDate),
+                eventLocation,
+                eventDescription,
+            } 
+        }else{
+            data ={
+                    eventName,
+                    eventDate: new Date(eventDate),
+                    eventLocation,
+                    eventDescription,
+                }
+            
         }
 
-        console.log("event date", data)
 
-        dispatch(createEvent(data))
+
+        if(match.params.id) {
+            dispatch(updateEvent(match.params.id, {id:match.params.id,...data}))
+        }else{
+            dispatch(createEvent(data))
+        }
+
+
         setEventName("")
         setEventDescription("")
         setEventLocation("")
@@ -150,7 +205,13 @@ const CreateEvent = ({ history, match }) => {
                     <textarea rows="5" className='create-form-desc' type="text" placeholder='' name="eventDescription" value={eventDescription} onChange={handleChange} />
 
                     <div>
-                        <button>{eventLoading ? <ClipLoader size={12} /> : <span>Save</span>}</button>
+                        {
+                            match.params.id ? 
+                            <button>{eventLoading ? <ClipLoader size={12} /> : <span>Update</span>}</button>                            
+                            :
+                            <button>{eventLoading ? <ClipLoader size={12} /> : <span>Save</span>}</button>
+                        }
+
                     </div>
 
                 </form>
