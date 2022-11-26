@@ -19,6 +19,7 @@ function App() {
   return (
     <div>
       <Header />
+      {console.log("testing")}
       <Switch>
         <Route exact path="/" component={HomePageTwo} />
         <Route exact path="/signup" component={SignupPage} />
