@@ -64,6 +64,7 @@
 input{
     outline: none;
     padding: 10px;
+
 }
 
 .signup-input-wrapper > label {
@@ -109,6 +110,17 @@ input{
     text-decoration: none;
 }
 
+input.signup-input-error {
+    border: 2px solid red ;
+    /* background-color: blue; */
+}
+
+.signup-error-msg{
+    font-size: 12px;
+    color: red;
+    font-weight: bold;
+}
+
 @media only screen and (max-width: 990px){
     .signup-left-side {
         display: none;
@@ -124,3 +136,4 @@ input{
         margin-bottom: 10px;
     }
 }
+
