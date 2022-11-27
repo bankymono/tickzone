@@ -31,7 +31,7 @@ const LoginPage = ({history}) => {
     },
     onSubmit: async values => {
 
-        await   dispatch(loginUser(email,password))
+        await   dispatch(loginUser(values.email,values.password))
         
     },
     validationSchema,
@@ -42,6 +42,7 @@ const LoginPage = ({history}) => {
     if(userInfo){
         history.push('/events-dashboard')
     } else if(error) {
+      console.log(error)
       Swal.fire({
         icon: 'error',
         title: error === "BAD REQUEST"? "Invalid username or password": error,

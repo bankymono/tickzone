@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { buyTicket, getAvailableTickets } from '../../redux/actions/eventActions';
 import './PaymentPage.css'
 
@@ -65,6 +66,10 @@ const PaymentPage = ({history, match}) => {
   return (
     <div className='payment-page-container'>
         {console.log(availableTicketsList,"yeba")}
+        {
+            !(availableTicketsList.length === 0) ?
+            <div className='tickets-sold-out'>Sold Out!!! <Link className='evt-detail-return' to={"/"}>Return</Link></div>
+            :
             <div className='payment-page-wrapper'>
                 <div className='payment-page-left-content'>
                     <div className='payment-page-left-content-heading'>Bill Details</div>
@@ -81,15 +86,15 @@ const PaymentPage = ({history, match}) => {
 
                     <div className='payment-page-options-wrapper'>
                         <div className='payment-page-options-heading'>Payment Options</div>
-                        <button className='payment-page-opt-btn-one'>Pay with Card</button>
-                        <button className='payment-page-opt-btn-two'>Pay with Bank Transfer</button>
+                        {/* <button className='payment-page-opt-btn-one'>Pay with Card</button> */}
+                        {/* <button className='payment-page-opt-btn-two'>Pay with Bank Transfer</button> */}
 
                         <div className='payment-opt-terms-and-con'>
                             <input type="checkbox" name="" id="" />
                             <div>Accept Eventic Terms and Conditions Privacy policy.</div>
                         </div>
 
-                        <button onClick={handleBuyTicket} className='payment-page-opt-btn-two'>Make Payment</button>
+                        <button onClick={handleBuyTicket} className='payment-page-opt-btn-two'>Get Ticket</button>
                     </div>
 
 
@@ -98,7 +103,7 @@ const PaymentPage = ({history, match}) => {
                     <div className='payment-summary-card-heading'>Order summary</div>
                     <div className='payment-summary-card-item'>
                         <div>1 x Regular ticket</div>
-                        <div>N5,000.00</div>
+                        <div>N0,000.00</div>
                     </div>
 
                     <div className='payment-summary-card-item'>
@@ -108,10 +113,12 @@ const PaymentPage = ({history, match}) => {
 
                     <div className='payment-summary-card-total'>
                         <div>Total</div>
-                        <div>N5,000.00</div>
+                        <div>N0,000.00</div>
                     </div>
                 </div>
             </div>
+        }
+
     </div>
   )
 }

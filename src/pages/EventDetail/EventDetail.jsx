@@ -76,21 +76,16 @@ const EventDetail = ({history,match}) => {
                     </div>
 
                 </div>
-
+                            {console.log(eventDetailData)}
                 <div className='event-detail-right-item'>
                     <div className='event-detail-right-one'>Ticket Details</div>
-                    <div className='event-detail-right-two'>Pineapple fiesta tickets</div>
-                    <div className='event-detail-right-three'>30 tickets available of 200</div>
+                    <div className='event-detail-right-two'>{`${eventDetailData.eventName}  tickets`}</div>
+                    {/* <div className='event-detail-right-three'>30 tickets available of 200</div> */}
                     <div className='event-detail-right-price-selection-option'>
-                        <div className='event-detail-right-price'>5,000.00</div>
-                        <select name="" id="">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
+                        <div className='event-detail-right-price'>Free</div>
                     </div>
                         {console.log(eventDetailData?.id, "heeee")}
-                    <button onClick={(e) => handlePageRedirect(e, eventDetailData?.id)} className='event-detail-right-btn'>Buy tickets</button>
+                    <button onClick={(e) => handlePageRedirect(e, eventDetailData?.id)} className='event-detail-right-btn'>Proceed to get Ticket</button>
                 </div>
             </div>
         </div>

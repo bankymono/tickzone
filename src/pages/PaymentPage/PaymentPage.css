@@ -99,3 +99,20 @@
     align-items: center;
     margin-bottom: 10px;
 }
+
+.tickets-sold-out{
+    /* background-color: red; */
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.evt-detail-return{
+    font-size: 30px;
+    margin-left: 20px;
+    text-decoration: none;
+    background-color:#06283D;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+}
