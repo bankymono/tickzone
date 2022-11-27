@@ -84,6 +84,7 @@
 .create-form-desc{
     width: 100%;
     margin-bottom: 20px;
+    /* height: 100px; */
 }
 
 .create-event-form button {

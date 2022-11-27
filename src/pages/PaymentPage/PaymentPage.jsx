@@ -67,7 +67,7 @@ const PaymentPage = ({history, match}) => {
     <div className='payment-page-container'>
         {console.log(availableTicketsList,"yeba")}
         {
-            !(availableTicketsList.length === 0) ?
+            (availableTicketsList.length === 0) ?
             <div className='tickets-sold-out'>Sold Out!!! <Link className='evt-detail-return' to={"/"}>Return</Link></div>
             :
             <div className='payment-page-wrapper'>

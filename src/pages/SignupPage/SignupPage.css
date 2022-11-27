@@ -110,7 +110,7 @@ input{
     text-decoration: none;
 }
 
-input.signup-input-error {
+input.signup-input-error, textarea.signup-input-error {
     border: 2px solid red ;
     /* background-color: blue; */
 }

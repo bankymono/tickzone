@@ -8,6 +8,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import Swal from 'sweetalert2';
 import { createEvent, getEventDetail, updateEvent } from '../../redux/actions/eventActions'
+import {useFormik} from 'formik';
+import * as Yup from 'yup';
+import parse from "date-fns/parse"
+
+const validationSchema = Yup.object({
+    eventName:Yup.string().required("Field is required"),
+    eventDate:Yup.date().transform(function(value,originalValue){
+        if(this.isType(value)){
+            return value
+        }
+        const result = parse(originalValue, "dd.MM.yyyy", new Date())
+        return result
+
+    })
+    // .required("Date is required")
+    .typeError("please enter a valid date")
+    .required("Date is required")
+    .min(new Date(), "date is too early"),
+    eventLocation:Yup.string().required("Location isrequired"),
+    eventDescription:Yup.string().required('Description is required')
+  })
 
 const CreateEvent = ({ history, match }) => {
     const dispatch = useDispatch();
@@ -24,6 +45,56 @@ const CreateEvent = ({ history, match }) => {
     const [eventDate, setEventDate] = useState(eventDetailData ? eventDetailData.eventDate : "")
     const [eventLocation, setEventLocation] = useState(eventDetailData ? eventDetailData.eventEventLocation : "")
     const [eventDescription, setEventDescription] = useState(eventDetailData ? eventDetailData.eventDescription : "")
+
+
+    const formik = useFormik({
+        initialValues:{
+            eventName,
+            eventDate,
+            eventLocation,
+            eventDescription,
+            
+        },
+        onSubmit: async values => {
+            let data ;
+            if(eventDetailData) {
+                data = {
+                    ...eventDetailData,
+                    eventName:values.eventName,
+                    eventDate: new Date(values.eventDate),
+                    eventLocation:values.eventLocation,
+                    eventDescription:values.eventDescription,
+                } 
+            }else{
+                data ={
+                        eventName,
+                        eventDate: new Date(values.eventDate),
+                        eventLocation:values.eventLocation,
+                        eventDescription:values.eventDescription,
+                    }
+                
+            }
+    
+    
+    
+            if(match.params.id) {
+                dispatch(updateEvent(match.params.id, {id:match.params.id,...data}))
+            }else{
+                dispatch(createEvent(data))
+            }
+        //   const data = {
+        //     eventName: values.eventName,
+        //     eventDate: values.eventDate,
+        //     eventLocation: values.eventLocation,
+        //     eventDescription:values.eventDescription,
+        //   }
+    
+            // await dispatch(createEvent(data))
+            
+        },
+    
+        validationSchema,
+    })
 
 
 
@@ -101,6 +172,7 @@ const CreateEvent = ({ history, match }) => {
         upeventSuccess,
         upeventError
     ])
+    
 
     useEffect(() => {
         if (!match.params.id) {
@@ -180,36 +252,38 @@ const CreateEvent = ({ history, match }) => {
             </Link>
 
             <div className='create-event-form-container'>
-                <form className='create-event-form' onSubmit={handleSubmit} action="">
+                <form className='create-event-form' onSubmit={formik.handleSubmit} action="">
                     <div>Hi, Brand Name</div>
                     <div>Create your event.</div>
 
                     <div>Event Name</div>
-                    <div>Please enter your event name, do ensure it is related to the event type</div>
-                    <input name="eventName" type="text" placeholder='Event name' value={eventName} onChange={handleChange} />
+                    <div className="signup-error-msg">{formik.errors.eventName}</div>
+                    <input className={formik.touched.eventName && formik.errors.eventName ?"signup-input-error":""} name="eventName" type="text" placeholder='Event name' value={formik.values.eventName} onChange={formik.handleChange} onBlur={formik.handleBlur} />
 
 
-                    <div>Event Time</div>
-                    <div>Please set Event Time and date</div>
+                    <div>Event Date</div>
+                    <div className="signup-error-msg">{formik.errors.eventDate}</div>
                     <div className='create-form-date-time-container'>
-                        <input type="date" name="eventDate" value={eventDate} onChange={handleChange} />
+                        <input className={formik.touched.eventDate && formik.errors.eventDate ?"signup-input-error":""} type="date" name="eventDate" value={formik.values.eventDate} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                         {/* <input type="time" /> */}
                     </div>
 
 
                     <div>Event Location</div>
-                    <input type="text" placeholder='Enter Event Address' name="eventLocation" value={eventLocation} onChange={handleChange} />
+                    <div className="signup-error-msg">{formik.errors.eventLocation}</div>
+                    <input className={formik.touched.eventLocation && formik.errors.eventLocation ?"signup-input-error":""} type="text" placeholder='Enter Event Address' name="eventLocation" value={formik.values.eventLocation} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                    
 
                     <div>Event Description</div>
-                    <div>Add descriptive details about your event</div>
-                    <textarea rows="5" className='create-form-desc' type="text" placeholder='' name="eventDescription" value={eventDescription} onChange={handleChange} />
+                    <div className="signup-error-msg">{formik.errors.eventDescription}</div>
+                    <textarea type="textarea"  className={formik.touched.eventDescription && formik.errors.eventDescription ?"create-form-desc signup-input-error":"create-form-desc"} rows="5"   placeholder='' name="eventDescription" value={formik.values.eventDescription} onChange={formik.handleChange} onBlur={formik.handleBlur} />
 
                     <div>
                         {
                             match.params.id ? 
-                            <button>{eventLoading ? <ClipLoader size={12} /> : <span>Update</span>}</button>                            
+                            <button type='submit'>{eventLoading ? <ClipLoader size={12} /> : <span>Update</span>}</button>                            
                             :
-                            <button>{eventLoading ? <ClipLoader size={12} /> : <span>Save</span>}</button>
+                            <button type='submit'>{eventLoading ? <ClipLoader size={12} /> : <span>Save</span>}</button>
                         }
 
                     </div>
