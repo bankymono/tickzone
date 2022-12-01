@@ -11,8 +11,8 @@ import * as Yup from 'yup';
 
 
 const validationSchema = Yup.object({
-  firstName:Yup.string().required("Field is required"),
-  lastName:Yup.string().required("required"),
+  firstName:Yup.string().matches(/^[A-Za-z ]*$/, 'Please enter valid name').required("Field is required"),
+  lastName:Yup.string().matches(/^[A-Za-z ]*$/, 'Please enter valid name').required("required"),
   brandName:Yup.string().required("required"),
   email:Yup.string().email('Invalid email format').required('required'),
   password:Yup.string().required('required'),
